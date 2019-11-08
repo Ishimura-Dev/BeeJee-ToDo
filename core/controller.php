@@ -34,13 +34,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($_POST["btnsnd"] == "task") {
     if (empty($_POST["username"])) {
         array_push($infoArray, 'Username must be filled');
-    } 
+    }elseif (!ctype_alnum($_POST["username"])){
+        array_push($infoArray, 'Username must contain only letters and numbers');
+    }else{
+        
+    }
 
     if (empty($_POST["email"])) {
         array_push($infoArray, 'Email must be filled');
-    }
-
-    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    }elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         array_push($infoArray, 'Email entered incorrectly');
     }
     
