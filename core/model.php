@@ -34,8 +34,13 @@ function getTasksSorted($column, $order) {
         $keyOrder = SORT_DESC;
     } else {
         $keyOrder = SORT_ASC;
-    } 
-    array_multisort($keyArray, $keyOrder, SORT_STRING, $allTasksSorted);
+    }
+    if ($column !=0 ) {
+        $sortFlag = SORT_STRING;
+    } else {
+        $sortFlag = SORT_NUMERIC;
+    }   
+    array_multisort($keyArray, $keyOrder, $sortFlag, $allTasksSorted);
 }
 
 //Create new or Update old Tasks 
