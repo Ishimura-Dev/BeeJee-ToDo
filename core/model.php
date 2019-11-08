@@ -35,7 +35,7 @@ function getTasksSorted($column, $order) {
     } else {
         $keyOrder = SORT_ASC;
     } 
-    array_multisort($keyArray, $keyOrder, $allTasksSorted);
+    array_multisort($keyArray, $keyOrder, SORT_STRING, $allTasksSorted);
 }
 
 //Create new or Update old Tasks 
@@ -63,7 +63,7 @@ function addTask($id, $u, $e, $s, $t) {
                 $moderate = 1;
             };
             $allTasks[$keyId] = [$id, $u, $e, $s, $t, $moderate]; //UPDATE task
-            $_GET['p'] = ceil(count($allTasks)/$taskOnPage); //set pagination to last entry        
+            $_GET['p'] = ceil($id/$taskOnPage); //set pagination to ID entry        
          } else {
              $modal = 'loginModal';
          }
@@ -74,19 +74,11 @@ function addTask($id, $u, $e, $s, $t) {
 
 //Prepare task data to show on Task modal window 
 function getTaskById($id){
-   global $oneTaskToEdit, $allTasks;
-   foreach ($allTasks as $key => $value) {
+    global $oneTaskToEdit, $allTasks, $taskOnPage;
+    $_GET['p'] = ceil($id/$taskOnPage); //set pagination to ID entry
+    foreach ($allTasks as $key => $value) {
        if ($value[0] == $id) $oneTaskToEdit = $value;  
-   }   
+    }
+    
 }
-
-function deleteTask($id) {
-    global $database, $allTasks;
-    return  writeDB($database,$allTasks);
-}
-
-
- 
-
-
 ?>

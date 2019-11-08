@@ -10,9 +10,9 @@ require_once './core/view.php';
         <title>BeeJee - ToDo list</title>
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <script async src="./js/jquery-3.4.1.min.js"></script>
-        <script async src="./js/popper.min.js"></script>
-        <script async src="./js/bootstrap.min.js"></script>
+        <script  src="./js/jquery-3.4.1.min.js"></script>
+        <script  src="./js/popper.min.js"></script>
+        <script  src="./js/bootstrap.min.js"></script>
         <style>
             body {
                 background-image: linear-gradient(-45deg, rgba(200,200,200,0), rgba(230,230,100,0.7), rgba(200,200,200,1) );
